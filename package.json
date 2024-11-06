@@ -1,6 +1,6 @@
 {
   "name": "@quanxiaoxiao/resource-curd",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "test": "node --test"
