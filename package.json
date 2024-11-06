@@ -1,0 +1,28 @@
+{
+  "name": "@quanxiaoxiao/resource-curd",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  },
+  "main": "./src/index.mjs",
+  "exports": {
+    ".": "./src/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.4.0",
+    "eslint": "^9.4.0",
+    "globals": "^15.4.0"
+  },
+  "engines": {
+    "node": ">= 20.0.0"
+  },
+  "dependencies": {
+    "file-type": "^19.6.0",
+    "image-size": "^1.1.1"
+  }
+}
