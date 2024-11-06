@@ -1,7 +1,10 @@
 import { readdir, stat } from 'node:fs/promises';
 import path from 'node:path';
 
-const walk = async (pathname) => {
+const walk = async (pathname, depth, maxDepth) => {
+  if (depth > maxDepth) {
+    return [];
+  }
   try {
     const states = await stat(pathname);
     if (states.isFile()) {
@@ -19,7 +22,7 @@ const walk = async (pathname) => {
     const result = [];
     for (let i = 0; i < list.length; i++) {
       const name = list[i];
-      const ret = await walk(path.resolve(pathname, name));
+      const ret = await walk(path.resolve(pathname, name), depth + 1, maxDepth);
       if (ret) {
         result.push(...ret);
       }
@@ -30,9 +33,12 @@ const walk = async (pathname) => {
   }
 };
 
-export default async (pathname) => {
+export default async (pathname, maxDepth) => {
+  if (maxDepth != null && maxDepth === 0) {
+    return [];
+  }
   const lengthWithPathname = pathname.length;
-  const list = await walk(pathname);
+  const list = await walk(pathname, 0, maxDepth || Infinity);
   return list.map((d) => {
     if (d.pathname.length === lengthWithPathname) {
       return {
