@@ -3,6 +3,7 @@ import readDirs from './readDirs.mjs';
 import isImageOfPathname from './isImageOfPathname.mjs';
 import readResourceBufOfPathname from './readResourceBufOfPathname.mjs';
 import readImageOfPathname from './readImageOfPathname.mjs';
+import readResourceOfPathname from './readResourceOfPathname.mjs';
 import readResources from './readResources.mjs';
 
 export {
@@ -11,5 +12,6 @@ export {
   isImageOfPathname,
   readResourceBufOfPathname,
   readImageOfPathname,
+  readResourceOfPathname,
   readDirs,
 };
