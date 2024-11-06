@@ -5,11 +5,14 @@ import sizeOf from 'image-size';
 
 const MAX_SIZE = 1024 * 1024 * 300;
 
-const walk = async (pathname, maxSize = MAX_SIZE) => {
+const walk = async (pathname, depth, maxDepth) => {
+  if (depth > maxDepth) {
+    return [];
+  }
   try {
     const states = await stat(pathname);
     if (states.isFile()) {
-      if (states.size > maxSize) {
+      if (states.size > MAX_SIZE) {
         return [];
       }
       const buf = await readFile(pathname);
@@ -46,7 +49,7 @@ const walk = async (pathname, maxSize = MAX_SIZE) => {
     const result = [];
     for (let i = 0; i < list.length; i++) {
       const name = list[i];
-      const ret = await walk(path.resolve(pathname, name), maxSize);
+      const ret = await walk(path.resolve(pathname, name), depth + 1, maxDepth);
       if (ret) {
         result.push(...ret);
       }
@@ -57,9 +60,12 @@ const walk = async (pathname, maxSize = MAX_SIZE) => {
   }
 };
 
-export default async (pathname) => {
+export default async (pathname, maxDepth) => {
+  if (maxDepth != null && maxDepth === 0) {
+    return [];
+  }
   const lengthWithPathname = pathname.length;
-  const list = await walk(pathname);
+  const list = await walk(pathname, 0, maxDepth || Infinity);
   return list.map((d) => ({
     ...d,
     pathname: d.pathname.slice(lengthWithPathname),
