@@ -10,15 +10,15 @@ const walk = async (pathname, maxSize = MAX_SIZE) => {
     const states = await stat(pathname);
     if (states.isFile()) {
       if (states.size > maxSize) {
-        return null;
+        return [];
       }
       const buf = await readFile(pathname);
       const mime = await fileTypeFromBuffer(buf);
       if (!mime) {
-        return null;
+        return [];
       }
       if (!/^image\//.test(mime.mime)) {
-        return null;
+        return [];
       }
       try {
         const dimensions = await sizeOf.imageSize(buf);
@@ -37,9 +37,9 @@ const walk = async (pathname, maxSize = MAX_SIZE) => {
             },
           ];
         }
-        return null;
+        return [];
       } catch (error) { // eslint-disable-line
-        return null;
+        return [];
       }
     }
     const list = await readdir(pathname);
@@ -53,7 +53,7 @@ const walk = async (pathname, maxSize = MAX_SIZE) => {
     }
     return result;
   } catch (error) { // eslint-disable-line
-    return null;
+    return [];
   }
 };
 
