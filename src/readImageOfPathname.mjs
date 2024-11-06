@@ -14,7 +14,10 @@ export default async (pathname) => {
     if (!/^image\//.test(mime.mime)) {
       return null;
     }
-    return buf;
+    return {
+      buf,
+      mime: mime.mime,
+    };
   } catch (error) { // eslint-disable-line
     return null;
   }
