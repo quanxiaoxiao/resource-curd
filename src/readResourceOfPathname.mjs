@@ -1,13 +1,20 @@
+import { readFile, stat } from 'node:fs/promises';
 import mime from 'mime-types';
-import readResourceBufOfPathname from './readResourceBufOfPathname.mjs';
 
 export default async (pathname) => {
-  const buf = await readResourceBufOfPathname(pathname);
-  if (!buf) {
+  try {
+    const states = await stat(pathname);
+    if (!states.isFile()) {
+      return null;
+    }
+    const buf = await readFile(pathname);
+    return {
+      buf,
+      mime: mime.lookup(pathname) || null,
+      dateTimeCreate: Math.floor(states.ctimeMs),
+      dateTimeUpdate: Math.floor(states.mtimeMs),
+    };
+  } catch (error) { // eslint-disable-line
     return null;
   }
-  return {
-    mime: mime.lookup(pathname) || null,
-    buf,
-  };
 }
