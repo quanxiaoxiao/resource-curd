@@ -22,9 +22,9 @@ const walk = async (pathname, depth, maxDepth) => {
     const result = [];
     for (let i = 0; i < list.length; i++) {
       const name = list[i];
-      const ret = await walk(path.resolve(pathname, name), depth + 1, maxDepth);
-      if (ret) {
-        result.push(...ret);
+      const walkResult = await walk(path.resolve(pathname, name), depth + 1, maxDepth);
+      if (walkResult) {
+        result.push(...walkResult);
       }
     }
     return result;
@@ -37,10 +37,10 @@ export default async (pathname, maxDepth) => {
   if (maxDepth != null && maxDepth === 0) {
     return [];
   }
-  const lengthWithPathname = pathname.length;
+  const basePathLength = pathname.length;
   const list = await walk(pathname, 0, maxDepth || Infinity);
   return list.map((d) => {
-    if (d.pathname.length === lengthWithPathname) {
+    if (d.pathname.length === basePathLength) {
       return {
         ...d,
         pathname: `/${d.name}`,
@@ -48,7 +48,7 @@ export default async (pathname, maxDepth) => {
     }
     return {
       ...d,
-      pathname: d.pathname.slice(lengthWithPathname),
+      pathname: d.pathname.slice(basePathLength),
     };
   });
 };
