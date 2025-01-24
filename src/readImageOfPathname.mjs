@@ -1,4 +1,5 @@
 import { readFile, stat } from 'node:fs/promises';
+
 import { fileTypeFromBuffer } from 'file-type';
 
 export default async (pathname) => {

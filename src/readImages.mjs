@@ -1,5 +1,6 @@
-import { readFile, readdir, stat } from 'node:fs/promises';
+import { readdir, readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
+
 import { fileTypeFromBuffer } from 'file-type';
 import sizeOf from 'image-size';
 

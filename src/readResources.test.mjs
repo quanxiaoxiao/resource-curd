@@ -1,9 +1,10 @@
-import test from 'node:test';
-import fs from 'node:fs';
-import process from 'node:process';
-import url from 'node:url';
-import path from 'node:path';
 import assert from 'node:assert';
+import fs from 'node:fs';
+import path from 'node:path';
+import process from 'node:process';
+import test from 'node:test';
+import url from 'node:url';
+
 import readResources from './readResources.mjs';
 
 test('readResources', async () => {

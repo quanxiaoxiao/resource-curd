@@ -1,4 +1,5 @@
 import { readFile, stat } from 'node:fs/promises';
+
 import mime from 'mime-types';
 
 export default async (pathname) => {
@@ -17,4 +18,4 @@ export default async (pathname) => {
   } catch (error) { // eslint-disable-line
     return null;
   }
-}
+};

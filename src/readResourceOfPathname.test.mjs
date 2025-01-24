@@ -1,8 +1,9 @@
-import process from 'node:process';
-import url from 'node:url';
-import path from 'node:path';
-import test from 'node:test';
 import assert from 'node:assert';
+import path from 'node:path';
+import process from 'node:process';
+import test from 'node:test';
+import url from 'node:url';
+
 import readResourceOfPathname from './readResourceOfPathname.mjs';
 
 test('readResourceOfPathname', async () => {

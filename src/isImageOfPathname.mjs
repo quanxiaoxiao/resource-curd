@@ -1,4 +1,5 @@
 import { fileTypeFromBuffer } from 'file-type';
+
 import readResourceBufOfPathname from './readResourceBufOfPathname.mjs';
 
 export default async (pathname) => {

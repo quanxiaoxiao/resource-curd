@@ -1,7 +1,8 @@
-import process from 'node:process';
-import path from 'node:path';
-import test from 'node:test';
 import assert from 'node:assert';
+import path from 'node:path';
+import process from 'node:process';
+import test from 'node:test';
+
 import readDirs from './readDirs.mjs';
 
 test('readDirs', async () => {
