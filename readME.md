@@ -74,7 +74,7 @@ npm install @quanxiaoxiao/resource-curd
 
 ## Usage Example
 ```javascript
-import { listResources, listImages } from './file-utilities.mjs';
+import { listResources, listImages } from '@quanxiaoxiao/resource-curd';
 
 // List all resources in a directory
 const resources = await listResources('./src');
