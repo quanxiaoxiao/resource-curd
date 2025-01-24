@@ -1,5 +1,5 @@
 import isImageOfPathname from './isImageOfPathname.mjs';
-import readDirs from './readDirs.mjs';
+import listSubdirectories from './listSubdirectories.mjs';
 import readFileMetadata from './readFileMetadata.mjs';
 import readImageOfPathname from './readImageOfPathname.mjs';
 import readImages from './readImages.mjs';
@@ -8,7 +8,7 @@ import readResources from './readResources.mjs';
 
 export {
   isImageOfPathname,
-  readDirs,
+  listSubdirectories,
   readFileMetadata,
   readImageOfPathname,
   readImages,
