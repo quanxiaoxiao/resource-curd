@@ -5,19 +5,19 @@ import process from 'node:process';
 import test from 'node:test';
 import url from 'node:url';
 
-import readResources from './readResources.mjs';
+import listResources from './listResources.mjs';
 
-test('readResources', async () => {
+test('listResources', async () => {
   const dir = path.resolve(process.cwd(), 'src');
-  const list = await readResources(dir);
+  const list = await listResources(dir);
   assert(list.length > 0);
   const currentResourcePathname = url.fileURLToPath(import.meta.url);
   assert(!!list.find((d) => path.join(dir, d.pathname) === currentResourcePathname));
 });;
 
-test('readResources2', async () => {
+test('listResources2', async () => {
   const dir = path.resolve(process.cwd(), 'node_modules');
-  const list = await readResources(dir);
+  const list = await listResources(dir);
   assert(list.length > 0);
   const fileList = fs.readdirSync(dir);
   assert(list.length > fileList.length);
@@ -29,18 +29,18 @@ test('readResources2', async () => {
   }
 });;
 
-test('readResources2', async () => {
+test('listResources2', async () => {
   const pathname = path.resolve(process.cwd(), 'package.json');
-  const list = await readResources(pathname);
+  const list = await listResources(pathname);
   assert.equal(list.length,  1);
   assert.equal(list[0].name, 'package.json');
   assert.equal(list[0].pathname, '/package.json');
   assert.equal(list[0].size, fs.readFileSync(pathname).length);
 });;
 
-test('readResources3', async () => {
+test('listResources3', async () => {
   const pathname = path.resolve(process.cwd(), 'node_modules');
-  const list = await readResources(pathname, 2);
+  const list = await listResources(pathname, 2);
   assert(list.length > 0);
   for (let i = 0; i < list.length; i++) {
     const item = list[i];

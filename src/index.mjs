@@ -4,7 +4,7 @@ import listSubdirectories from './listSubdirectories.mjs';
 import readFileBuffer from './readFileBuffer.mjs';
 import readFileMetadata from './readFileMetadata.mjs';
 import readImageMetadata from './readImageMetadata.mjs';
-import readResources from './readResources.mjs';
+import listResources from './listResources.mjs';
 
 export {
   isImageFile,
@@ -13,5 +13,5 @@ export {
   readFileBuffer,
   readFileMetadata,
   readImageMetadata,
-  readResources,
+  listResources,
 };

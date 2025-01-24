@@ -46,7 +46,7 @@ This module provides a collection of utility functions for file and directory op
   - Object with buffer, mime type, creation time, update time
   - `null` if not an image or file cannot be read
 
-### 7. `readResources(pathname, maxDepth)`
+### 7. `listResources(pathname, maxDepth)`
 - **Purpose**: Recursively list files with their metadata
 - **Input**: 
   - `pathname`: File or directory path
@@ -68,10 +68,10 @@ This module provides a collection of utility functions for file and directory op
 
 ## Usage Example
 ```javascript
-import { readResources, listImages } from './file-utilities.mjs';
+import { listResources, listImages } from './file-utilities.mjs';
 
 // List all resources in a directory
-const resources = await readResources('./src');
+const resources = await listResources('./src');
 
 // Find all images in a directory
 const images = await listImages('./images', 2);
