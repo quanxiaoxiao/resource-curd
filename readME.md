@@ -3,6 +3,12 @@
 ## Overview
 This module provides a collection of utility functions for file and directory operations in Node.js, focusing on file metadata, resource reading, and image handling.
 
+## Install
+
+```shell
+npm install @quanxiaoxiao/resource-curd
+```
+
 ## Exported Functions
 
 ### 1. `isImageFile(pathname)`
