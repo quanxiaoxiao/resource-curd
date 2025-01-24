@@ -4,14 +4,14 @@ import process from 'node:process';
 import test from 'node:test';
 import url from 'node:url';
 
-import readResourceOfPathname from './readResourceOfPathname.mjs';
+import readFileMetadata from './readFileMetadata.mjs';
 
-test('readResourceOfPathname', async () => {
-  let ret = await readResourceOfPathname(path.resolve(process.cwd(), 'package.json'));
+test('readFileMetadata', async () => {
+  let ret = await readFileMetadata(path.resolve(process.cwd(), 'package.json'));
   assert.equal(ret.mime, 'application/json');
-  ret = await readResourceOfPathname(path.resolve(process.cwd(), 'package11.json'));
+  ret = await readFileMetadata(path.resolve(process.cwd(), 'package11.json'));
   assert.equal(ret, null);
   const currentResourcePathname = url.fileURLToPath(import.meta.url);
-  ret = await readResourceOfPathname(currentResourcePathname);
+  ret = await readFileMetadata(currentResourcePathname);
   assert.equal(ret.mime, 'application/javascript');
 });
