@@ -1,9 +1,9 @@
 import { fileTypeFromBuffer } from 'file-type';
 
-import readResourceBufOfPathname from './readResourceBufOfPathname.mjs';
+import readFileBuffer from './readFileBuffer.mjs';
 
 export default async (pathname) => {
-  const buf = await readResourceBufOfPathname(pathname);
+  const buf = await readFileBuffer(pathname);
   if (!buf) {
     return false;
   }
