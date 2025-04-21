@@ -28,7 +28,7 @@ const walk = async (pathname, depth, maxDepth) => {
       }
     }
     return result;
-  } catch (error) { // eslint-disable-line
+  } catch (error) {
     return null;
   }
 };

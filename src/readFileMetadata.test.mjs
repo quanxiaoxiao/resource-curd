@@ -13,5 +13,5 @@ test('readFileMetadata', async () => {
   assert.equal(ret, null);
   const currentResourcePathname = url.fileURLToPath(import.meta.url);
   ret = await readFileMetadata(currentResourcePathname);
-  assert.equal(ret.mime, 'application/javascript');
+  assert.equal(ret.mime, 'text/javascript');
 });

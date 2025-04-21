@@ -32,7 +32,7 @@ test('listResources2', async () => {
 test('listResources2', async () => {
   const pathname = path.resolve(process.cwd(), 'package.json');
   const list = await listResources(pathname);
-  assert.equal(list.length,  1);
+  assert.equal(list.length, 1);
   assert.equal(list[0].name, 'package.json');
   assert.equal(list[0].pathname, '/package.json');
   assert.equal(list[0].size, fs.readFileSync(pathname).length);

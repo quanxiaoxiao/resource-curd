@@ -22,7 +22,7 @@ export default async (pathname) => {
       dateTimeCreate: Math.floor(states.ctimeMs),
       dateTimeUpdate: Math.floor(states.mtimeMs),
     };
-  } catch (error) { // eslint-disable-line
+  } catch (error) {
     return null;
   }
 };

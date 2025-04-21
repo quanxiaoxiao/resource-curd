@@ -17,7 +17,7 @@ export default async (pathname) => {
       }
     }, Promise.resolve);
     return result;
-  } catch (error) { // eslint-disable-line
+  } catch (error) {
     return [];
   }
 };

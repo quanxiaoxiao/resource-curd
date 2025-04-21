@@ -16,7 +16,7 @@ export default async (pathname) => {
       return false;
     }
     return true;
-  } catch (error) { // eslint-disable-line
+  } catch (error) {
     return false;
   }
 };

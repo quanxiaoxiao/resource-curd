@@ -2,7 +2,7 @@ import { readdir, readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 
 import { fileTypeFromBuffer } from 'file-type';
-import sizeOf from 'image-size';
+import { imageSize } from 'image-size';
 
 const MAX_SIZE = 1024 * 1024 * 300;
 
@@ -25,7 +25,7 @@ const walk = async (pathname, depth, maxDepth) => {
         return [];
       }
       try {
-        const dimensions = await sizeOf.imageSize(buf);
+        const dimensions = await imageSize(buf);
         if (dimensions.width > 0 && dimensions.height > 0) {
           return [
             {
@@ -42,7 +42,7 @@ const walk = async (pathname, depth, maxDepth) => {
           ];
         }
         return [];
-      } catch (error) { // eslint-disable-line
+      } catch (error) {
         return [];
       }
     }
@@ -56,7 +56,7 @@ const walk = async (pathname, depth, maxDepth) => {
       }
     }
     return result;
-  } catch (error) { // eslint-disable-line
+  } catch (error) {
     return [];
   }
 };

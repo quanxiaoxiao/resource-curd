@@ -8,7 +8,7 @@ export default async (pathname) => {
     }
     const buf = await readFile(pathname);
     return buf;
-  } catch (error) { // eslint-disable-line
+  } catch (error) {
     return null;
   }
 };
